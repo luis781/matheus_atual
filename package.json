@@ -1,0 +1,49 @@
+{
+  "name": "futecoach-interface",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sistema FUTECOACH com React + Vite + Express + MariaDB",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "server": "node src/api/routes/app.js"
+  },
+  "keywords": [],
+  "author": "Teu Nome",
+  "license": "ISC",
+  "dependencies": {
+    "@heroui/link": "^2.2.13",
+    "@heroui/navbar": "^2.2.14",
+    "@heroui/react": "^2.7.5",
+    "@tailwindcss/vite": "^4.1.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "framer-motion": "^12.10.3",
+    "mysql2": "^3.14.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.5.1",
+    "tailwind": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5"
+  }
+}
