@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 export function Desempenho() {
+  const navigate = useNavigate();
   // Aqui podes buscar dados reais do backend ou usar dados mock
   const estatisticas = [
     { label: 'Jogos', valor: 24 },
@@ -44,30 +46,36 @@ export function Desempenho() {
         </div>
 
         {/* Resumo de avaliações (placeholder) */}
-        <div className="bg-white rounded-lg shadow p-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Resumo das Avaliações</h2>
-          <div className="flex flex-col md:flex-row gap-6 justify-between">
-            <div className="flex-1 text-center">
-              <span className="block text-2xl font-bold text-green-600 mb-1">7.8</span>
-              <span className="text-gray-700 text-sm">Média Geral</span>
-            </div>
-            <div className="flex-1 text-center">
-              <span className="block text-2xl font-bold text-blue-600 mb-1">8.2</span>
-              <span className="text-gray-700 text-sm">Técnica</span>
-            </div>
-            <div className="flex-1 text-center">
-              <span className="block text-2xl font-bold text-yellow-600 mb-1">7.5</span>
-              <span className="text-gray-700 text-sm">Tática</span>
-            </div>
-            <div className="flex-1 text-center">
-              <span className="block text-2xl font-bold text-red-600 mb-1">7.0</span>
-              <span className="text-gray-700 text-sm">Física</span>
-            </div>
-            <div className="flex-1 text-center">
-              <span className="block text-2xl font-bold text-purple-600 mb-1">8.0</span>
-              <span className="text-gray-700 text-sm">Mental</span>
-            </div>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Resumo das Avaliações</h2>
+        <div className="flex flex-col md:flex-row gap-6 justify-between">
+          <div className="flex-1 text-center">
+            <span className="block text-2xl font-bold text-green-600 mb-1">7.8</span>
+            <span className="text-gray-700 text-sm">Média Geral</span>
           </div>
+          <div className="flex-1 text-center">
+            <span className="block text-2xl font-bold text-blue-600 mb-1">8.2</span>
+            <span className="text-gray-700 text-sm">Técnica</span>
+          </div>
+          <div className="flex-1 text-center">
+            <span className="block text-2xl font-bold text-yellow-600 mb-1">7.5</span>
+            <span className="text-gray-700 text-sm">Tática</span>
+          </div>
+          <div className="flex-1 text-center">
+            <span className="block text-2xl font-bold text-red-600 mb-1">7.0</span>
+            <span className="text-gray-700 text-sm">Física</span>
+          </div>
+          <div className="flex-1 text-center">
+            <span className="block text-2xl font-bold text-purple-600 mb-1">8.0</span>
+            <span className="text-gray-700 text-sm">Mental</span>
+          </div>
+        </div>
+        <div className="flex justify-end mt-8">
+          <button
+            onClick={() => navigate('/dashboard')}
+            className="bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold py-2 px-6 rounded transition border border-gray-200"
+          >
+            Voltar
+          </button>
         </div>
       </motion.div>
     </div>

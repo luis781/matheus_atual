@@ -70,7 +70,7 @@ export function DetalhesTreino() {
         </div>
         <div className="flex justify-end mt-8">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/treinos')}
             className="bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold py-2 px-6 rounded transition border border-gray-200"
           >
             Voltar

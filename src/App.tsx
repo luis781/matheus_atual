@@ -4,6 +4,7 @@ import { Login } from './pages/Login';
 import { Registar } from './pages/Registar';
 import { Sobre } from './pages/Sobre';
 import { Dashboard } from './pages/dashboard/Dashboard';
+import { JogadorDashboard } from './pages/dashboard/JogadorDashboard';
 import { ListaJogadores } from './pages/jogadores/ListaJogadores';
 import { Treinos } from './pages/treinos/Treinos';
 import { ExerciciosTreino } from './pages/treinos/ExerciciosTreino';
@@ -16,6 +17,11 @@ import { NovaAvaliacao } from './pages/avaliacoes/NovaAvaliacao';
 import { Desempenho } from './pages/Desempenho';
 import { EditarAvaliacao } from './pages/avaliacoes/EditarAvaliacao';
 import { DetalhesTreino } from './pages/treinos/DetalhesTreino';
+import { TreinadorDashboard } from './pages/dashboard/TreinadorDashboard';
+import ObjetivosJogador from './pages/jogadores/ObjetivosJogador';
+import NovoExercicio from './pages/treinos/NovoExercicio';
+import CalendarioJogos from './pages/calendario/CalendarioJogos';
+import ConfirmarPresenca from './pages/treinos/ConfirmarPresenca';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -27,6 +33,8 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
 }
 
 function AppContent() {
+  const { user } = useAuth();
+
   return (
     <>
       <Navbar />
@@ -39,7 +47,13 @@ function AppContent() {
           path="/dashboard"
           element={
             <PrivateRoute>
-              <Dashboard />
+              {user?.tipo === 'treinador' ? (
+                <TreinadorDashboard />
+              ) : user?.tipo === 'jogador' ? (
+                <JogadorDashboard />
+              ) : (
+                <Dashboard />
+              )}
             </PrivateRoute>
           }
         />
@@ -110,7 +124,46 @@ function AppContent() {
         <Route path="/avaliacoes/:id" element={<EditarAvaliacao />} />
         <Route path="/subscreva" element={<Subscreva />} />
         <Route path="/recuperar-password" element={<RecuperarPassword />} />
-        <Route path="/desempenho" element={<Desempenho />} />
+        <Route
+          path="/desempenho"
+          element={
+            <PrivateRoute>
+              <Desempenho />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/objetivos"
+          element={
+            <PrivateRoute>
+              <ObjetivosJogador />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/treinos/exercicios/novo"
+          element={
+            <PrivateRoute>
+              <NovoExercicio />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/calendario"
+          element={
+            <PrivateRoute>
+              <CalendarioJogos />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/treinos/confirmar"
+          element={
+            <PrivateRoute>
+              <ConfirmarPresenca />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

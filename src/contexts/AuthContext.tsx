@@ -5,6 +5,7 @@ interface User {
   id: number;
   email: string;
   nome: string;
+  tipo: 'treinador' | 'jogador' | 'admin';
 }
 
 interface AuthContextType {
@@ -31,16 +32,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     // Simular uma verificação de login
     if (email && password) {
+      // Determinar o tipo de usuário baseado no email
+      let tipo: 'treinador' | 'jogador' | 'admin' = 'jogador';
+      if (email.includes('treinador')) {
+        tipo = 'treinador';
+      } else if (email.includes('admin')) {
+        tipo = 'admin';
+      }
+
       // Usuário de exemplo
       const loggedUser = {
         id: 1,
         email: email,
-        nome: 'Treinador',
+        nome: tipo === 'treinador' ? 'Treinador' : tipo === 'admin' ? 'Administrador' : 'Jogador',
+        tipo: tipo
       };
 
       // Salvar no localStorage
       localStorage.setItem('user', JSON.stringify(loggedUser));
       setUser(loggedUser);
+
+      // Redirecionar para o dashboard
       navigate('/dashboard');
     } else {
       throw new Error('Email e senha são obrigatórios');
