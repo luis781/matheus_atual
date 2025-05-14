@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface Treino {
   id: number;
@@ -33,6 +33,7 @@ export function Treinos() {
       totalJogadores: 24,
     },
   ];
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-[calc(100vh-64px)] bg-gray-50">
@@ -103,6 +104,14 @@ export function Treinos() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex justify-end mt-8">
+          <button
+            onClick={() => navigate('/dashboard')}
+            className="bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold py-2 px-6 rounded transition border border-gray-200"
+          >
+            Voltar
+          </button>
         </div>
       </div>
     </div>

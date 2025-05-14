@@ -102,7 +102,7 @@ export function TreinadorDashboard() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Dashboard do Treinador</h1>
           <p className="mt-1 text-sm text-gray-500">
-            Gerencie seus treinos, jogadores e exercícios
+            Gerir os seus treinos, jogadores e exercícios
           </p>
         </div>
 
@@ -224,7 +224,7 @@ export function TreinadorDashboard() {
                 to="/treinos"
                 className="text-sm font-medium text-blue-600 hover:text-blue-500"
               >
-                Ver todos os treinos →
+                Ver todos os treinos
               </Link>
             </div>
           </div>
@@ -266,7 +266,7 @@ export function TreinadorDashboard() {
                 to="/jogadores"
                 className="text-sm font-medium text-blue-600 hover:text-blue-500"
               >
-                Ver todos os jogadores →
+                Ver todos os jogadores
               </Link>
             </div>
           </div>
@@ -341,7 +341,7 @@ export function TreinadorDashboard() {
                 to="/exercicios"
                 className="text-sm font-medium text-blue-600 hover:text-blue-500"
               >
-                Ver todos os exercícios →
+                Ver todos os exercícios
               </Link>
             </div>
           </div>
@@ -358,10 +358,10 @@ export function TreinadorDashboard() {
               Agendar Treino
             </Link>
             <Link
-              to="/jogadores/novo"
+              to="/novo/jogador"
               className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700"
             >
-              Adicionar Jogador
+              Novo Jogador
             </Link>
             <Link
               to="/treinos/exercicios/novo"

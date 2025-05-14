@@ -35,36 +35,33 @@ export function ListaJogadores() {
           <ul className="divide-y divide-gray-200">
             {jogadores.map((jogador) => (
               <li key={jogador.id}>
-                <Link to={`/jogadores/${jogador.id}`} className="block hover:bg-gray-50">
-                  <div className="px-4 py-4 sm:px-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center">
-                          <span className="text-lg font-medium text-gray-600">{jogador.numero}</span>
-                        </div>
-                        <div className="ml-4">
-                          <p className="text-sm font-medium text-blue-600">{jogador.nome}</p>
-                          <p className="text-sm text-gray-500">{jogador.posicao}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="mr-6">
-                          <p className="text-sm text-gray-900">Idade</p>
-                          <p className="text-sm font-medium text-gray-500">{jogador.idade} anos</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-900">Última Avaliação</p>
-                          <p className="text-sm font-medium text-gray-500">{jogador.ultimaAvaliacao}</p>
-                        </div>
-                        <div className="ml-6">
-                          <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                      </div>
+                <div className="flex items-center justify-between hover:bg-gray-50 px-4 py-4 sm:px-6">
+                  <Link to={`/jogadores/${jogador.id}`} className="flex-1 flex items-center min-w-0">
+                    <div className="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center">
+                      <span className="text-lg font-medium text-gray-600">{jogador.numero}</span>
                     </div>
+                    <div className="ml-4">
+                      <p className="text-sm font-medium text-blue-600">{jogador.nome}</p>
+                      <p className="text-sm text-gray-500">{jogador.posicao}</p>
+                    </div>
+                  </Link>
+                  <div className="flex items-center gap-4">
+                    <div>
+                      <p className="text-sm text-gray-900">Idade</p>
+                      <p className="text-sm font-medium text-gray-500">{jogador.idade} anos</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-900">Última Avaliação</p>
+                      <p className="text-sm font-medium text-gray-500">{jogador.ultimaAvaliacao}</p>
+                    </div>
+                    <Link
+                      to={`/avaliacoes?jogador=${jogador.id}`}
+                      className="ml-6 inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+                    >
+                      Ver Avaliações
+                    </Link>
                   </div>
-                </Link>
+                </div>
               </li>
             ))}
           </ul>

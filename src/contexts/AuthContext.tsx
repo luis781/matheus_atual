@@ -52,8 +52,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('user', JSON.stringify(loggedUser));
       setUser(loggedUser);
 
-      // Redirecionar para o dashboard
-      navigate('/dashboard');
+      // Registrar última atividade se for jogador
+      if (tipo === 'jogador') {
+        const lastActiveRaw = localStorage.getItem('jogadoresLastActive');
+        let lastActive = lastActiveRaw ? JSON.parse(lastActiveRaw) : {};
+        lastActive[loggedUser.id] = new Date().toLocaleString();
+        localStorage.setItem('jogadoresLastActive', JSON.stringify(lastActive));
+      }
+
+      // Redirecionar com base no tipo de usuário
+      if (tipo === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     } else {
       throw new Error('Email e senha são obrigatórios');
     }
@@ -78,4 +90,4 @@ export function useAuth() {
     throw new Error('useAuth deve ser usado dentro de um AuthProvider');
   }
   return context;
-} 
+}

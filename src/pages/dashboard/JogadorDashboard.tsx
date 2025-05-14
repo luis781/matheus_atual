@@ -209,7 +209,7 @@ export function JogadorDashboard() {
                 to="/treinos"
                 className="text-sm font-medium text-blue-600 hover:text-blue-500"
               >
-                Ver todos os treinos →
+                Ver todos os treinos
               </Link>
             </div>
           </div>
@@ -247,7 +247,7 @@ export function JogadorDashboard() {
                 to="/avaliacoes"
                 className="text-sm font-medium text-blue-600 hover:text-blue-500"
               >
-                Ver todas as avaliações →
+                Ver todas as avaliações
               </Link>
             </div>
           </div>
@@ -313,7 +313,7 @@ export function JogadorDashboard() {
                 to="/objetivos"
                 className="text-sm font-medium text-blue-600 hover:text-blue-500"
               >
-                Ver todos os objetivos →
+                Ver todos os objetivos
               </Link>
             </div>
           </div>

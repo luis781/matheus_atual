@@ -7,20 +7,30 @@ export function AdicionarJogador() {
   const [posicao, setPosicao] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [numero, setNumero] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [mensagem, setMensagem] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui podes adicionar a lógica para guardar o jogador (API/backend)
-    setMensagem('Jogador adicionado com sucesso!');
+    if (!nome || !posicao || !dataNascimento || !numero || !email || !password) {
+      setMensagem('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    // Aqui podes adicionar a lógica para guardar o jogador e criar o login (API/backend)
+    const novoJogador = { nome, posicao, dataNascimento, numero, email, password };
+    console.log('Jogador criado:', novoJogador);
+    setMensagem('Jogador criado com sucesso!');
     setTimeout(() => {
       navigate('/jogadores');
-    }, 1000); // Espera 1 segundo para mostrar a mensagem antes de redirecionar
+    }, 1000);
     setNome('');
     setPosicao('');
     setDataNascimento('');
     setNumero('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -33,7 +43,7 @@ export function AdicionarJogador() {
       >
         <div>
           <h2 className="text-center text-3xl font-bold text-gray-900 mb-2">
-            Adicionar Jogador
+            Criar Jogador
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Preenche os dados do novo jogador da tua equipa.
@@ -104,12 +114,51 @@ export function AdicionarJogador() {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Email do jogador"
+            />
+          </div>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Password para login"
+            />
+          </div>
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
           >
-            Adicionar Jogador
+            Criar Jogador
           </button>
+          <div className="flex justify-end mt-4">
+            <button
+              type="button"
+              onClick={() => navigate('/dashboard')}
+              className="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-6 rounded"
+            >
+              Voltar
+            </button>
+          </div>
         </form>
       </motion.div>
     </div>

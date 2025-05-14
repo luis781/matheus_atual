@@ -20,7 +20,7 @@ export default function ConfirmarPresenca() {
 
   return (
     <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md text-center">
+      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md text-center relative">
         <h1 className="text-2xl font-bold mb-4 text-gray-900">Confirmar Presença</h1>
         <div className="mb-6 text-gray-700">
           <p className="font-semibold mb-2">Próximo Treino:</p>
@@ -48,12 +48,12 @@ export default function ConfirmarPresenca() {
           </div>
         )}
         <button
-          onClick={() => navigate('/treinos')}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition mt-2 w-full"
+          onClick={() => navigate('/dashboard')}
+          className="bg-gray-200 hover:bg-gray-300 text-black font-medium py-2 px-4 rounded transition absolute bottom-4 right-4"
         >
-          Voltar aos Treinos
+          Voltar
         </button>
       </div>
     </div>
   );
-} 
+}

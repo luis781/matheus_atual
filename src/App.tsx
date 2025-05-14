@@ -11,7 +11,7 @@ import { ExerciciosTreino } from './pages/treinos/ExerciciosTreino';
 import { Avaliacoes } from './pages/avaliacoes/Avaliacoes';
 import { Subscreva } from './pages/Subscreva';
 import { RecuperarPassword } from './pages/RecuperarPassword';
-import { AdicionarJogador } from './pages/jogadores/AdicionarJogador';
+import { AdicionarJogador } from './pages/admin/CriarJogador';
 import { AgendarTreino } from './pages/treinos/AgendarTreino';
 import { NovaAvaliacao } from './pages/avaliacoes/NovaAvaliacao';
 import { Desempenho } from './pages/Desempenho';
@@ -22,8 +22,16 @@ import ObjetivosJogador from './pages/jogadores/ObjetivosJogador';
 import NovoExercicio from './pages/treinos/NovoExercicio';
 import CalendarioJogos from './pages/calendario/CalendarioJogos';
 import ConfirmarPresenca from './pages/treinos/ConfirmarPresenca';
+import JogadorDetalhes from './pages/jogadores/JogadorDetalhes';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import GerenciarJogadores from './pages/admin/GerirJogadores';
+import GerenciarTreinadores from './pages/admin/GerirTreinadores';
+import GerenciarCalendario from './pages/admin/GerirCalendario';
+import AdicionarJogo from './pages/admin/AdicionarJogo';
+import CriarTreinador from './pages/admin/CriarTreinador';
+import { AdicionarJogador as NovoJogador } from './pages/jogadores/NovoJogador';
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import './style.css';
 
@@ -164,6 +172,23 @@ function AppContent() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/exercicios"
+          element={
+            <PrivateRoute>
+              <ExerciciosTreino />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/jogadores/:id" element={<JogadorDetalhes />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/jogadores" element={<GerenciarJogadores />} />
+        <Route path="/admin/treinadores" element={<GerenciarTreinadores />} />
+        <Route path="/admin/calendario" element={<GerenciarCalendario />} />
+        <Route path="/admin/jogos/novo" element={<AdicionarJogo />} />
+        <Route path="/admin/jogadores/novo" element={<AdicionarJogador />} />
+        <Route path="/admin/treinadores/novo" element={<CriarTreinador />} />
+        <Route path="/novo/jogador" element={<NovoJogador />} />
       </Routes>
     </>
   );
@@ -171,10 +196,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <AuthProvider>
         <AppContent />
       </AuthProvider>
-    </BrowserRouter>
+    </Router>
   );
 }
